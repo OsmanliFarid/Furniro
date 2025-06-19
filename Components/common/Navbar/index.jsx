@@ -22,8 +22,8 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" h-20 max-w-[85vw] m-auto">
-        <div className={`grid grid-cols-2 md:grid-cols-3  items-center h-20`}>
+      <div className=" max-w-[85vw] m-auto">
+        <div className={`grid grid-cols-2 md:grid-cols-3  items-center py-5`}>
           <div className="">
             <img src="/images/Logo.svg" alt="" />
           </div>
