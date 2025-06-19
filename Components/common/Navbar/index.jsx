@@ -5,6 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { TbShoppingCart } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
+import { IoCloseSharp } from "react-icons/io5";
 const Navbar = () => {
   const NavbarArray = [
     { id: 1, title: "Home", href: "/" },
@@ -13,8 +14,10 @@ const Navbar = () => {
     { id: 4, title: "Contact", href: "/contact" },
   ];
   const [NewNavbarArray, SetNavbarArray] = useState([]);
+  const [Bars, SetBars] = useState(false);
   const BarsClickShow = () => {
     SetNavbarArray(NavbarArray);
+    SetBars(!Bars);
   };
 
   return (
@@ -42,14 +45,60 @@ const Navbar = () => {
             <TbShoppingCart className="text-2xl font-bold" />
           </div>
           <div className=" flex w-full justify-end px-5 text-2xl">
-            <FaBars
-              className="md:hidden cursor-pointer"
-              onClick={() => BarsClickShow()}
-            />
+            {Bars ? (
+              <IoCloseSharp
+                className="md:hidden cursor-pointer text-4xl"
+                onClick={() => BarsClickShow()}
+              />
+            ) : (
+              <FaBars
+                className="md:hidden cursor-pointer"
+                onClick={() => BarsClickShow()}
+              />
+            )}
           </div>
         </div>
       </div>
-      <div className="fixed h-full w-[300px] bg-gray-500 top-0"></div>
+      <div
+        className={`${
+          Bars
+            ? "opacity-100 transition-all duration-500"
+            : "opacity-0 transition-all duration-500"
+        } fixed h-full w-[300px] bg-gray-500 top-0`}
+      >
+        <div className="">
+          <div className="flex justify-end px-5 py-5">
+            <IoCloseSharp
+              className="md:hidden cursor-pointer text-5xl"
+              onClick={() => BarsClickShow()}
+            />
+          </div>
+          <div className="">
+            {NewNavbarArray?.map(({ id, title, href }) => {
+              return (
+                <div className=" px-5 py-2" key={id}>
+                  <Link
+                    className="font-semibold text-md hover:text-white transition-all duration-300 hover:font-bold"
+                    href={href}
+                  >
+                    {title}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex gap-x-4 px-5 py-6">
+            <img
+              src="/images/accountalert.svg"
+              alt=""
+              className="cursor-pointer"
+            />
+            <CiSearch className="text-3xl font-bold cursor-pointer" />
+            <CiHeart className="text-3xl font-bold cursor-pointer" />
+            <TbShoppingCart className="text-3xl font-bold cursor-pointer" />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
