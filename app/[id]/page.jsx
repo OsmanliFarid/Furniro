@@ -39,9 +39,9 @@ const Products = () => {
                 {Data.size?.map(({ id, Size }) => {
                   return (
                     <h1
-                      className={`${
+                      className={` ${
                         Active == id ? "bg-[#B88E2F] font-bold" : "bg-[#F9F1E7]"
-                      }  w-[30px] h-[30px] rounded-[5px] flex justify-center items-center cursor-pointer select-none`}
+                      }   w-[30px] h-[30px] rounded-[5px] flex justify-center items-center cursor-pointer select-none`}
                       key={id}
                       onClick={() => SizeClickShow(id)}
                     >
