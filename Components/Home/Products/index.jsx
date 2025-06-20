@@ -18,8 +18,9 @@ const Products = () => {
   };
   const [Detail, SetDetail] = useState({});
   const CartClickDetail = (id) => {
-    const NewDetail = ArrayData.find((item) => item.id === id);
-    console.log(NewDetail);
+    axios.get("http://localhost:3030/" + id).then((data) => {
+      console.log(data);
+    });
   };
   return (
     <>
@@ -91,8 +92,7 @@ const Products = () => {
                     Delete
                   </Link>
                   <Link
-                    onClick={() => CartClickDetail(user.id)}
-                    href="#"
+                    href={`http://localhost:3000/${user.id}`}
                     className="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-all duration-300"
                   >
                     Details
