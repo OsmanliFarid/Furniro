@@ -8,6 +8,7 @@ const Products = () => {
 
   const [Data, SetData] = useState({});
   const [Active, SetActive] = useState(id);
+  const [ColorActive, SetColorActive] = useState(id);
   useEffect(() => {
     axios.get("http://localhost:3030/" + id).then(({ data }) => {
       SetData(data);
@@ -16,7 +17,9 @@ const Products = () => {
   const SizeClickShow = (id) => {
     SetActive(id);
   };
-  const ColorClickShow = (id) => {};
+  const ColorClickShow = (id) => {
+    SetColorActive(id);
+  };
   return (
     <>
       <div className="max-w-[85vw] m-auto">
@@ -50,14 +53,18 @@ const Products = () => {
             </div>
             <div className="pt-5">
               <h1 className="text-[#9f9f9f] pb-3">Color</h1>
-              <div className="flex">
+              <div className="flex gap-x-2">
                 {Data.color?.map(({ id, color }) => {
                   return (
                     <div
                       key={id}
                       style={{ backgroundColor: color }}
                       onClick={() => ColorClickShow(id)}
-                      className="w-[30px] h-[30px] rounded-full border border-gray-300 mr-2"
+                      className={`${
+                        ColorActive === id
+                          ? "border-3 border-[#2982ff] w-[29px] h-[29px]"
+                          : "w-[30px] h-[30px] border-none"
+                      }  rounded-full  cursor-pointer`}
                     ></div>
                   );
                 })}
