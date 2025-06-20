@@ -25,7 +25,9 @@ const Navbar = () => {
       <div className=" max-w-[85vw] m-auto">
         <div className={`grid grid-cols-2 md:grid-cols-3  items-center py-5`}>
           <div className="">
-            <img src="/images/Logo.svg" alt="" />
+            <Link href="/">
+              <img src="/images/Logo.svg" alt="" className="" />
+            </Link>
           </div>
           <div className="md:flex hidden  justify-center md:gap-x-6 xl:gap-x-14">
             {NavbarArray.map(({ id, title, href }) => {

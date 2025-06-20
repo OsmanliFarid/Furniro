@@ -1,5 +1,6 @@
 "use client";
 
+import Products from "@/Components/Home/Products";
 import RangeCart from "@/Components/Home/RangeCart";
 import Link from "next/link";
 import React from "react";
@@ -33,6 +34,7 @@ const Home = () => {
       </div>
       <div className="max-w-[85vw] m-auto">
         <RangeCart />
+        <Products />
       </div>
     </>
   );
