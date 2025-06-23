@@ -10,10 +10,10 @@ const Products = () => {
   const [Active, SetActive] = useState(id);
   const [ColorActive, SetColorActive] = useState(id);
   useEffect(() => {
-    axios.get("http://localhost:3030/" + id).then(({ data }) => {
-      SetData(data);
+    axios.get("http://localhost:3030/products/" + id).then(({ data }) => {
+      SetData(data.data);
     });
-  }, []);
+  }, [id]);
   const SizeClickShow = (id) => {
     SetActive(id);
   };
@@ -36,14 +36,16 @@ const Products = () => {
             <div className="">
               <h1 className="text-[#9f9f9f] pb-3">Size</h1>
               <div className="flex gap-x-3">
-                {Data.size?.map(({ id, Size }) => {
+                {Data.size?.map(({ _id, Size }) => {
                   return (
                     <h1
                       className={` ${
-                        Active == id ? "bg-[#B88E2F] font-bold" : "bg-[#F9F1E7]"
+                        Active == _id
+                          ? "bg-[#B88E2F] font-bold"
+                          : "bg-[#F9F1E7]"
                       }   w-[30px] h-[30px] rounded-[5px] flex justify-center items-center cursor-pointer select-none`}
-                      key={id}
-                      onClick={() => SizeClickShow(id)}
+                      key={_id}
+                      onClick={() => SizeClickShow(_id)}
                     >
                       {Size}
                     </h1>
@@ -54,14 +56,14 @@ const Products = () => {
             <div className="pt-5">
               <h1 className="text-[#9f9f9f] pb-3">Color</h1>
               <div className="flex gap-x-2">
-                {Data.color?.map(({ id, color }) => {
+                {Data.color?.map(({ _id, color }) => {
                   return (
                     <div
-                      key={id}
+                      key={_id}
                       style={{ backgroundColor: color }}
-                      onClick={() => ColorClickShow(id)}
+                      onClick={() => ColorClickShow(_id)}
                       className={`${
-                        ColorActive === id
+                        ColorActive === _id
                           ? "border-3 border-[#2982ff] w-[29px] h-[29px]"
                           : "w-[30px] h-[30px] border-none"
                       }  rounded-full  cursor-pointer`}

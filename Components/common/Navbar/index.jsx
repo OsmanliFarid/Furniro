@@ -26,11 +26,11 @@ const Navbar = () => {
         <div className={`grid grid-cols-2 md:grid-cols-3  items-center py-5`}>
           <div className="">
             <Link href="/">
-              <img src="/images/Logo.svg" alt="" className="" />
+              <img src="/images/Logo.png" alt="" className="" />
             </Link>
           </div>
           <div className="md:flex hidden  justify-center md:gap-x-6 xl:gap-x-14">
-            {NavbarArray.map(({ id, title, href }) => {
+            {NavbarArray?.map(({ id, title, href }) => {
               return (
                 <div className="" key={id}>
                   <Link className={`font-medium `} href={href}>

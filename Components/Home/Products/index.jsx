@@ -7,21 +7,11 @@ const Products = () => {
   const [ArrayData, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3030/user").then(({ data }) => {
-      setData(data);
+    axios.get("http://localhost:3030/products").then(({ data }) => {
+      setData(data.data);
     });
   }, []);
-  const CartClickShow = (id) => {
-    axios.delete("http://localhost:3030/user" + "/" + id).then(({ data }) => {
-      setData(data);
-    });
-  };
-  const [Detail, SetDetail] = useState({});
-  const CartClickDetail = (id) => {
-    axios.get("http://localhost:3030/" + id).then((data) => {
-      console.log(data);
-    });
-  };
+
   return (
     <>
       <div className="">
@@ -29,8 +19,8 @@ const Products = () => {
           Our Products
         </h1>
         <div className="p-6 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
-          {ArrayData.map((user) => (
-            <div className="" key={user.id}>
+          {ArrayData?.map((user) => (
+            <div className="" key={user._id}>
               <div className="w-[285px] bg-[#F4F5F7] h-[446px] relative group">
                 <div
                   className="w-[285px] h-[301px] bg-cover bg-center"
@@ -39,10 +29,10 @@ const Products = () => {
                     backgroundSize: "cover",
                   }}
                 >
-                  <div className="" key={user.id}>
-                    {user.discounts.map((item) => {
+                  <div className="" key={user._id}>
+                    {user.discounts?.map((item) => {
                       return (
-                        <div className="flex justify-end p-5" key={user.id}>
+                        <div className="flex justify-end p-5" key={user._id}>
                           <h1
                             className={`${
                               item.discount ? "bg-[#E97171]" : "hidden"
@@ -70,10 +60,10 @@ const Products = () => {
                       </h1>
                     </div>
                     <div className="">
-                      {user.discounts.map(({ discount, price }) => {
+                      {user.discounts?.map(({ price }) => {
                         return (
                           <h1
-                            key={user.id}
+                            key={user._id}
                             className="text-[#B0B0B0] line-through"
                           >
                             {price}
@@ -85,14 +75,7 @@ const Products = () => {
                 </div>
                 <div className="opacity-0 flex flex-col gap-y-4 absolute inset-0 bg-black group-hover:opacity-60 justify-center items-center transition-all duration-500">
                   <Link
-                    href="#"
-                    onClick={() => CartClickShow(user.id)}
-                    className="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-all duration-300"
-                  >
-                    Delete
-                  </Link>
-                  <Link
-                    href={`http://localhost:3000/${user.id}`}
+                    href={`http://localhost:3000/${user._id}`}
                     className="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-all duration-300"
                   >
                     Details
