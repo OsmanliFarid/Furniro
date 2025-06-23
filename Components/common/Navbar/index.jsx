@@ -41,10 +41,14 @@ const Navbar = () => {
             })}
           </div>
           <div className="hidden md:flex justify-end gap-x-8">
-            <img src="/images/accountalert.svg" alt="" />
-            <CiSearch className="text-2xl font-bold" />
-            <CiHeart className="text-2xl font-bold" />
-            <TbShoppingCart className="text-2xl font-bold" />
+            <CiSearch className="text-2xl font-bold cursor-pointer" />
+            <CiHeart className="text-2xl font-bold cursor-pointer" />
+            <div className="flex relative">
+              <TbShoppingCart className="text-2xl font-bold cursor-pointer" />
+              <div className="bg-red-500 w-4 h-4 text-sm flex justify-center items-center rounded-full absolute right-[-3px] top-[-3px]">
+                0
+              </div>
+            </div>
           </div>
           <div className=" flex w-full justify-end px-5 text-2xl">
             {Bars ? (
@@ -90,11 +94,6 @@ const Navbar = () => {
             })}
           </div>
           <div className="flex gap-x-4 px-5 py-6">
-            <img
-              src="/images/accountalert.svg"
-              alt=""
-              className="cursor-pointer"
-            />
             <CiSearch className="text-3xl font-bold cursor-pointer" />
             <CiHeart className="text-3xl font-bold cursor-pointer" />
             <TbShoppingCart className="text-3xl font-bold cursor-pointer" />

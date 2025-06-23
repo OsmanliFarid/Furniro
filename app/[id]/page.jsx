@@ -20,6 +20,7 @@ const Products = () => {
   const ColorClickShow = (id) => {
     SetColorActive(id);
   };
+  const [Count, SetCount] = useState(0);
   return (
     <>
       <div className="max-w-[85vw] m-auto">
@@ -71,6 +72,32 @@ const Products = () => {
                   );
                 })}
               </div>
+            </div>
+            <div className="flex gap-7 mt-6">
+              <div className="border-[#9F9F9F] border-2 rounded-2xl px-3 justify-between text-xl flex items-center w-[123px] h-[64px]">
+                <div className="">
+                  <button
+                    className="cursor-pointer"
+                    onClick={() => SetCount(Count && Count - 1)}
+                  >
+                    -
+                  </button>
+                </div>
+                <div className="">
+                  <h1>{Count}</h1>
+                </div>
+                <div className="">
+                  <button
+                    className="cursor-pointer"
+                    onClick={() => SetCount(Count + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <button className="w-[215px] h-[64px] font-bold cursor-pointer border-[#9F9F9F] border-2 rounded-2xl px-3">
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>
