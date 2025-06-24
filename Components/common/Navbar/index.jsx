@@ -6,6 +6,8 @@ import { CiHeart } from "react-icons/ci";
 import { TbShoppingCart } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
+import { ShopDetail } from "@/Store/Store";
+
 const Navbar = () => {
   const NavbarArray = [
     { id: 1, title: "Home", href: "/" },
@@ -23,6 +25,11 @@ const Navbar = () => {
   const ShoppingCartClick = () => {
     SetShop(!Shop);
   };
+  const CloseShopClick = () => {
+    SetShop(!Shop);
+  };
+  const ShopDetailItem = ShopDetail((state) => state.ShopDetailItem);
+  const ItemClickDelete = ShopDetail((state) => state.ItemClickDelete);
 
   return (
     <>
@@ -47,13 +54,10 @@ const Navbar = () => {
           <div className="hidden md:flex justify-end gap-x-8">
             <CiSearch className="text-2xl font-bold cursor-pointer" />
             <CiHeart className="text-2xl font-bold cursor-pointer" />
-            <div className="flex relative">
-              <TbShoppingCart
-                onClick={() => ShoppingCartClick()}
-                className="text-2xl font-bold cursor-pointer"
-              />
+            <div className="flex relative" onClick={() => ShoppingCartClick()}>
+              <TbShoppingCart className="text-2xl font-bold cursor-pointer" />
               <div className="bg-red-500 w-4 h-4 text-sm flex justify-center items-center rounded-full absolute right-[-3px] top-[-3px]">
-                0
+                {ShopDetailItem.length}
               </div>
             </div>
           </div>
@@ -72,9 +76,60 @@ const Navbar = () => {
           </div>
         </div>
         <div
-          className={`${Shop ? "opacity-100 visible" : "opacity-0 invisible"}`}
+          className={`${
+            Shop
+              ? "opacity-100 visible fixed inset-0 bg-[rgba(0,0,0,0.5)] z-1"
+              : "opacity-0 invisible"
+          }`}
         >
-          <div className="w-[417px] h-[746px] bg-black top-0 fixed right-0 z-2"></div>
+          <div className="w-[417px] h-[746px] bg-white top-0 fixed right-0 z-2">
+            <div className="px-7">
+              <div className="flex justify-between items-center mt-5">
+                <h1 className="text-[#000000] font-semibold text-2xl">
+                  Shopping Cart
+                </h1>
+                <IoCloseSharp
+                  className="text-3xl cursor-pointer"
+                  onClick={() => CloseShopClick()}
+                />
+              </div>
+              <div className="w-[287px] mt-5 h-1 bg-[#D9D9D9]"></div>
+              <div className="">
+                {ShopDetailItem?.map((item) => {
+                  return (
+                    <div
+                      key={item._id}
+                      className="flex w-[350px] justify-between gap-x-5 mt-10 items-center"
+                    >
+                      <div className="">
+                        <img
+                          src={item.image}
+                          alt=""
+                          className="w-[108px] h-[105] rounded-xl"
+                        />
+                      </div>
+                      <div className="text-center">
+                        <h1 className="text-black text-md font-semibold">
+                          {item.title}
+                        </h1>
+                        <div className="flex gap-x-4 items-center">
+                          <h1 className="text-md">1</h1>
+                          <h1 className="text-sm">X</h1>
+                          <h1 className="text-[#B88E2F]">{item.price}</h1>
+                        </div>
+                      </div>
+                      <div className="">
+                        <IoCloseSharp
+                          className="text-white text-2xl cursor-pointer bg-[#9F9F9F] rounded-full w-[20px] h-[20px]"
+                          onClick={() => ItemClickDelete(item)}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
