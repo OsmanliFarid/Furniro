@@ -6,7 +6,9 @@ import { CiHeart } from "react-icons/ci";
 import { TbShoppingCart } from "react-icons/tb";
 import { FaBars } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
+import { useStore } from "@/Store/Store";
 const Navbar = () => {
+  const { count } = useStore();
   const NavbarArray = [
     { id: 1, title: "Home", href: "/" },
     { id: 2, title: "Shop", href: "/shop" },
@@ -46,7 +48,7 @@ const Navbar = () => {
             <div className="flex relative">
               <TbShoppingCart className="text-2xl font-bold cursor-pointer" />
               <div className="bg-red-500 w-4 h-4 text-sm flex justify-center items-center rounded-full absolute right-[-3px] top-[-3px]">
-                0
+                {count}
               </div>
             </div>
           </div>
