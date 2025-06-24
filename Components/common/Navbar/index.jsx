@@ -22,15 +22,26 @@ const Navbar = () => {
     SetBars(!Bars);
   };
   const [Shop, SetShop] = useState(false);
-  const ShoppingCartClick = () => {
-    SetShop(!Shop);
-  };
+
   const CloseShopClick = () => {
     SetShop(!Shop);
   };
   const ShopDetailItem = ShopDetail((state) => state.ShopDetailItem);
   const ItemClickDelete = ShopDetail((state) => state.ItemClickDelete);
+  const Count = ShopDetail((state) => state.Count);
+  console.log(Count);
 
+  const ShoppingCartClick = () => {
+    SetShop(!Shop);
+    let total = 0;
+    ShopDetailItem.forEach((element) => {
+      let numericPrice = element.price.split(" ");
+      let number = numericPrice[1];
+      number = +number.replace(/\./g, "");
+      total += Count * number;
+    });
+    console.log(total);
+  };
   return (
     <>
       <div className=" max-w-[85vw] m-auto">
@@ -56,7 +67,7 @@ const Navbar = () => {
             <CiHeart className="text-2xl font-bold cursor-pointer" />
             <div className="flex relative" onClick={() => ShoppingCartClick()}>
               <TbShoppingCart className="text-2xl font-bold cursor-pointer" />
-              <div className="bg-red-500 w-4 h-4 text-sm flex justify-center items-center rounded-full absolute right-[-3px] top-[-3px]">
+              <div className="bg-red-500 w-4 h-4 text-sm flex justify-center items-center rounded-full absolute right-[-3px] top-[-3px] cursor-pointer">
                 {ShopDetailItem.length}
               </div>
             </div>
@@ -113,7 +124,7 @@ const Navbar = () => {
                           {item.title}
                         </h1>
                         <div className="flex gap-x-4 items-center">
-                          <h1 className="text-md">1</h1>
+                          <h1 className="text-md">{item.count}</h1>
                           <h1 className="text-sm">x</h1>
                           <h1 className="text-[#B88E2F]">{item.price}</h1>
                         </div>
