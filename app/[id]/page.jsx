@@ -1,11 +1,9 @@
 "use client";
-import { UseAddClose, useStore } from "@/Store/Store";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 const Products = () => {
   const { id } = useParams();
-  const { AddRef, ince } = UseAddClose();
 
   const [Data, SetData] = useState({});
   const [Active, SetActive] = useState(id);
@@ -22,6 +20,18 @@ const Products = () => {
     SetColorActive(id);
   };
   const [Count, SetCount] = useState(0);
+  const [AddRef, SetAddRef] = useState(false);
+  const [Shop, SetShop] = useState({});
+  const AddToCartClick = () => {
+    SetAddRef(!AddRef);
+    axios.get("http://localhost:3030/products/" + id).then(({ data }) => {
+      if (data.success === true) {
+        SetShop(data.data);
+      } else {
+        console.log("xeta var");
+      }
+    });
+  };
   return (
     <>
       <div className="max-w-[85vw] m-auto">
@@ -98,7 +108,7 @@ const Products = () => {
               </div>
               <button
                 className="w-[215px] h-[64px] font-bold cursor-pointer border-[#9F9F9F] border-2 rounded-2xl px-3"
-                onClick={ince}
+                onClick={() => AddToCartClick()}
               >
                 {AddRef ? "Close" : "Add To Cart"}
               </button>
