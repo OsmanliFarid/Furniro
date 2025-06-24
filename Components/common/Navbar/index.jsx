@@ -114,7 +114,7 @@ const Navbar = () => {
                         </h1>
                         <div className="flex gap-x-4 items-center">
                           <h1 className="text-md">1</h1>
-                          <h1 className="text-sm">X</h1>
+                          <h1 className="text-sm">x</h1>
                           <h1 className="text-[#B88E2F]">{item.price}</h1>
                         </div>
                       </div>
