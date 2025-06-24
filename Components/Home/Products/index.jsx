@@ -18,7 +18,7 @@ const Products = () => {
         <h1 className="text-[#333333] font-bold text-4xl text-center mt-16 mb-14">
           Our Products
         </h1>
-        <div className="p-6 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="p-6 grid grid-cols-1 justify-items-center md:grid-cols-2 xl:grid-cols-4 gap-6">
           {ArrayData?.map((user) => (
             <div className="" key={user._id}>
               <div className="w-[285px] bg-[#F4F5F7] h-[446px] relative group">

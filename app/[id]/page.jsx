@@ -13,6 +13,8 @@ const Products = () => {
     axios.get("http://localhost:3030/products/" + id).then(({ data }) => {
       SetData(data.data);
     });
+    SetCount(0);
+    SetAddRef(false);
   }, [id]);
   const SizeClickShow = (id) => {
     SetActive(id);
@@ -21,18 +23,24 @@ const Products = () => {
     SetColorActive(id);
   };
   const [Count, SetCount] = useState(0);
-
-  const { ItemClickShow, ItemClickDelete, AddRef } = ShopDetail();
+  const [AddRef, SetAddRef] = useState(false);
+  const { ItemClickShow, ItemClickDelete, SetCounts } = ShopDetail();
   const [ProductShop, SetProductShop] = useState({});
   const AddToCartClick = () => {
+    SetAddRef(!AddRef);
     axios.get("http://localhost:3030/products/" + id).then(({ data }) => {
       if (data.success === true) {
+        SetCounts(Count);
         ItemClickShow(data.data);
         SetProductShop(data.data);
       } else {
         console.log("xeta var");
       }
     });
+  };
+  const removeClick = () => {
+    ItemClickDelete(ProductShop);
+    SetAddRef(false);
   };
   return (
     <>
@@ -111,14 +119,10 @@ const Products = () => {
               <button
                 className="w-[215px] h-[64px] font-bold cursor-pointer border-[#9F9F9F] border-2 rounded-2xl px-3"
                 onClick={() => {
-                  if (AddRef) {
-                    ItemClickDelete(ProductShop);
-                  } else {
-                    AddToCartClick();
-                  }
+                  AddToCartClick();
                 }}
               >
-                {AddRef ? "Close" : "Add To Cart"}
+                {"Add To Cart"}
               </button>
             </div>
           </div>
