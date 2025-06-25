@@ -87,13 +87,17 @@ const Navbar = () => {
           </div>
         </div>
         <div
-          className={`${
+          className={`duration-500 transition-all ${
             Shop
               ? "opacity-100 visible fixed inset-0 bg-[rgba(0,0,0,0.5)] z-1"
               : "opacity-0 invisible"
           }`}
         >
-          <div className="w-[417px] h-[746px] bg-white top-0 fixed right-0 z-2">
+          <div
+            className={`w-[417px] h-[746px] bg-white top-0 fixed transition-all duration-500 right-0 z-2 ${
+              Shop ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
             <div className="px-7">
               <div className="flex justify-between items-center mt-5">
                 <h1 className="text-[#000000] font-semibold text-2xl">

@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const ShopDetail = create((set) => ({
   ShopDetailItem: [],
   AddRef: false,
-  Count: 0,
+  Count: 1,
   SetCounts: (item) =>
     set((state) => {
       return {

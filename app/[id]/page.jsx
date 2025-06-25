@@ -13,7 +13,7 @@ const Products = () => {
     axios.get("http://localhost:3030/products/" + id).then(({ data }) => {
       SetData(data.data);
     });
-    SetCount(0);
+    SetCount(1);
     SetAddRef(false);
   }, [id]);
   const SizeClickShow = (id) => {
