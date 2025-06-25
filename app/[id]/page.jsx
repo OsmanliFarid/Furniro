@@ -18,6 +18,7 @@ const Products = () => {
   }, [id]);
   const SizeClickShow = (id) => {
     SetActive(id);
+    console.log("Salam");
   };
   const ColorClickShow = (id) => {
     SetColorActive(id);
