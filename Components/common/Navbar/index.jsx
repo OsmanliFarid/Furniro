@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { TbShoppingCart } from "react-icons/tb";
@@ -29,10 +29,12 @@ const Navbar = () => {
   const ShopDetailItem = ShopDetail((state) => state.ShopDetailItem);
   const ItemClickDelete = ShopDetail((state) => state.ItemClickDelete);
   const Count = ShopDetail((state) => state.Count);
-  console.log(Count);
-
+  const [Total, SetTotal] = useState(0);
   const ShoppingCartClick = () => {
     SetShop(!Shop);
+  };
+
+  useEffect(() => {
     let total = 0;
     ShopDetailItem.forEach((element) => {
       let numericPrice = element.price.split(" ");
@@ -40,8 +42,8 @@ const Navbar = () => {
       number = +number.replace(/\./g, "");
       total += Count * number;
     });
-    console.log(total);
-  };
+    SetTotal(total);
+  }, [ShopDetailItem]);
   return (
     <>
       <div className=" max-w-[85vw] m-auto">
@@ -98,8 +100,8 @@ const Navbar = () => {
               Shop ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <div className="px-7">
-              <div className="flex justify-between items-center mt-5">
+            <div className="px-7 grid grid-rows-[40px_30px_570px] grid-cols-1  h-full">
+              <div className="flex justify-between items-center pt-5">
                 <h1 className="text-[#000000] font-semibold text-2xl">
                   Shopping Cart
                 </h1>
@@ -142,6 +144,10 @@ const Navbar = () => {
                     </div>
                   );
                 })}
+              </div>
+              <div className="flex  w-70  justify-between">
+                <h1>Subtotal</h1>
+                <h1 className="text-[#B88E2F] font-semibold">RS. {Total}</h1>
               </div>
             </div>
           </div>
