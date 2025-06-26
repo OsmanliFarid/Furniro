@@ -69,7 +69,11 @@ const Navbar = () => {
             <CiHeart className="text-2xl font-bold cursor-pointer" />
             <div className="flex relative" onClick={() => ShoppingCartClick()}>
               <TbShoppingCart className="text-2xl font-bold cursor-pointer" />
-              <div className="bg-red-500 w-4 h-4 text-sm flex justify-center items-center rounded-full absolute right-[-3px] top-[-3px] cursor-pointer">
+              <div
+                className={`${
+                  ShopDetailItem.length === 0 ? "hidden" : "block"
+                } bg-red-500 w-4 h-4 text-sm flex justify-center items-center rounded-full absolute right-[-3px] top-[-3px] cursor-pointer`}
+              >
                 {ShopDetailItem.length}
               </div>
             </div>
