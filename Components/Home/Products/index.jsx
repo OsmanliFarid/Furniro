@@ -85,6 +85,14 @@ const Products = () => {
             </div>
           ))}
         </div>
+        <div className="flex justify-center mt-5">
+          <Link
+            href="#"
+            className="text-center border-1 text-[#B88E2F] border-[#B88E2F] p-[10px_70px]"
+          >
+            Show More
+          </Link>
+        </div>
       </div>
     </>
   );
