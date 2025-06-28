@@ -5,6 +5,7 @@ import RangeCart from "@/Components/Home/RangeCart";
 import Link from "next/link";
 import React from "react";
 import Slider from "@/Components/Home/Slider";
+import Furniture from "@/Components/Home/Furniture/Index";
 
 const Home = () => {
   return (
@@ -40,6 +41,7 @@ const Home = () => {
         <Products />
       </div>
       <Slider />
+      <Furniture />
     </>
   );
 };

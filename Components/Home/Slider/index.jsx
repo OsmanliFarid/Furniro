@@ -10,7 +10,7 @@ const Slider = () => {
   return (
     <div className="bg-[#FCF8F3] mt-10">
       <div className="max-w-[85vw] m-auto">
-        <div className="grid grid-cols-[1fr_auto] items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_auto] items-center">
           <div className="">
             <h1 className="font-bold text-4xl w-[422px]">
               50+ Beautiful rooms inspiration
@@ -27,7 +27,7 @@ const Slider = () => {
             </Link>
           </div>
 
-          <div className="w-[818px] ">
+          <div className="w-full mt-10 xl:w-[818px] ">
             <Swiper
               modules={[Navigation, Pagination]}
               navigation
