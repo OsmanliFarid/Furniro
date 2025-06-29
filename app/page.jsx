@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import Slider from "@/Components/Home/Slider";
 import Furniture from "@/Components/Home/Furniture/Index";
+import Footer from "@/Components/common/Footer";
 
 const Home = () => {
   return (
@@ -42,6 +43,7 @@ const Home = () => {
       </div>
       <Slider />
       <Furniture />
+      <Footer />
     </>
   );
 };

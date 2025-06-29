@@ -52,12 +52,12 @@ const Furniture = () => {
             <img
               src="/images/furn8.png"
               alt=""
-              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-5 xl:col-end-6"
+              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-4 xl:col-end-7"
             />
             <img
               src="/images/furn9.png"
               alt=""
-              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-6 xl:translate-y-5 ml-[-120px] xl:col-end-7"
+              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-6 xl:translate-y-5 ml-[-150px] xl:col-end-7"
             />
           </div>
         </div>
