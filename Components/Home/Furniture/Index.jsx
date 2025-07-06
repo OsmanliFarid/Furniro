@@ -13,7 +13,7 @@ const Furniture = () => {
           </h1>
         </div>
         <div className="">
-          <div className="grid grid-cols-1 gap-y-5 justify-items-center xl:grid-cols-[120px_100px_380px_330px_330px]">
+          <div className="grid grid-cols-1 gap-y-10 justify-items-center xl:grid-cols-[70px_100px_400px_357px_330px] xl:grid-rows-[380px_300px]">
             <img
               src="/images/Furn1.png"
               alt=""
@@ -52,12 +52,12 @@ const Furniture = () => {
             <img
               src="/images/furn8.png"
               alt=""
-              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-4 xl:col-end-7"
+              className="w-full xl:w-auto xl:row-start-2 translate-y-10 ml-[-20px] xl:row-end-3 xl:col-start-4 xl:col-end-7"
             />
             <img
               src="/images/furn9.png"
               alt=""
-              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-6 xl:translate-y-5 ml-[-150px] xl:col-end-7"
+              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-6 xl:translate-y-15 ml-[-200px] xl:md-auto xl:col-end-7"
             />
           </div>
         </div>
