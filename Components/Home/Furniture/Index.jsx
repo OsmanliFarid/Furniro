@@ -47,7 +47,7 @@ const Furniture = () => {
             <img
               src="/images/furn7.png"
               alt=""
-              className="w-full xl:w-auto xl:row-start-2 xl:row-end-3 xl:col-start-3 xl:col-end-4"
+              className="w-full xl:w-auto xl:row-start-2 hover:text-2xl xl:row-end-3 xl:col-start-3 xl:col-end-4"
             />
             <img
               src="/images/furn8.png"
