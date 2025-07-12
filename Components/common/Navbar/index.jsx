@@ -57,7 +57,7 @@ const Navbar = () => {
             {NavbarArray?.map(({ id, title, href }) => {
               return (
                 <div className="" key={id}>
-                  <Link className={`font-medium `} href={href}>
+                  <Link className={`font-bold`} href={href}>
                     {title}
                   </Link>
                 </div>
